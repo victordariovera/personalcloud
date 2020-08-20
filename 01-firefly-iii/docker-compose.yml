@@ -1,0 +1,28 @@
+version: '3.3'
+  
+services:
+  fireflyiii:
+    image: jc5x/firefly-iii:latest
+    volumes:
+      - $PWD/firefly_iii_export:/var/www/firefly-iii/storage/export
+      - $PWD/firefly_iii_upload:/var/www/firefly-iii/storage/upload
+    env_file: .env
+    ports:
+      - 8051:80
+    depends_on:
+      - firefly_iii_db
+    restart: always
+  firefly_iii_db:
+    image: postgres:10-alpine
+    environment:
+      - POSTGRES_USER=firefly
+      - POSTGRES_PASSWORD=secret_firefly_password
+    volumes:
+      - firefly_iii_db:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+   firefly_iii_export:
+   firefly_iii_upload:
+   firefly_iii_db:
+

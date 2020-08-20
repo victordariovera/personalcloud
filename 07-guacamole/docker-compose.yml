@@ -1,0 +1,35 @@
+version: '3'
+services:
+  db:
+    container_name: guacamole-db
+    networks:
+      - net
+    image: mysql:5.7
+    volumes:
+      - $PWD/conf/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+      - $PWD/data:/var/lib/mysql
+    env_file: .env
+    restart: always
+  daemon:
+    container_name: guacamole-daemon
+    networks:
+      - net
+    image: guacamole/guacd
+    depends_on:
+      - db
+    restart: always
+  web:
+    container_name: guacamole-web
+    networks:
+      - net
+    image: guacamole/guacamole
+    env_file: .env
+    depends_on:
+      - daemon
+    ports:
+      - "8057:8080"
+    restart: always
+    volumes:
+      - $PWD/guacamole-home:/etc/guacamole-home
+networks:
+  net:

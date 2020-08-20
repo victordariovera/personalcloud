@@ -1,0 +1,17 @@
+version: "3"
+services:
+  funkwhale:
+    container_name: funkwhale
+    restart: unless-stopped
+    # change version number here when you want to do an upgrade
+    image: funkwhale/all-in-one:|version|
+    env_file: .env
+    environment:
+      # adapt to the pid/gid that own /srv/funkwhale/data
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - $PWD/data:/data
+      - $PWD/music:/music:ro
+    ports:
+      - "8056:80"

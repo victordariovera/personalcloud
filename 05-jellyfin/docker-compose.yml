@@ -1,0 +1,13 @@
+version: "3"
+services:
+    jellyfin:
+      image: jellyfin/jellyfin:latest
+      volumes:
+        - $PWD/config:/config
+        - $PWD/cache:/cache
+        - $PWD/media/video:/media/video
+        - $PWD/media/musica:/media/musica
+        - $PWD/media/iptv:/media/iptv
+      restart: always
+      ports:
+      - 8055:8096

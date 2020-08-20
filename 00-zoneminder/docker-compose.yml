@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    image: quantumobject/docker-zoneminder:1.34
+    ports:
+      - "8050:80"
+    environment:
+      TZ: 'America/Argentina/Buenos_Aires'
+      ZM_DB_HOST: 'db'
+      SHM-SIZE: 1024m
+    depends_on:
+      - db
+    volumes:
+      - /mnt/DEPOSITO_2018/zoneminder_storage:/storage
+    shm_size: 1024M
+  db:
+    image: mysql/mysql-server:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    environment:
+      MYSQL_USER: zmuser
+      MYSQL_PASSWORD: zmpass
+      MYSQL_DATABASE: zm
+      MYSQL_ROOT_PASSWORD: zoneminder
+      TZ: 'America/Argentina/Buenos_Aires'
+

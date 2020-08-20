@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: huginn/huginn 
+    ports:
+      - "8053:80"
+    environment:
+      - HUGINN_TWITTER_OAUTH_KEY: ''
+      - HUGINN_TWITTER_OAUTH_SECRET: ''
+
+       
