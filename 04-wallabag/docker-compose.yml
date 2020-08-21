@@ -20,14 +20,14 @@ services:
     ports:
       - "8054:80"
     volumes:
-      - /opt/wallabag/images:/var/www/html/secure/wallabag/web/assets/images
+      - ../../docker-data/04-wallabag/images:/var/www/html/secure/wallabag/web/assets/images
   db:
     image: mariadb
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=wallaroot
     volumes:
-      - /opt/wallabag/data:/var/lib/mysql
+      - ../../docker-data/04-wallabag/mysqldata:/var/lib/mysql
   redis:
     image: redis:alpine
     restart: always
