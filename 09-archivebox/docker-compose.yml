@@ -22,7 +22,7 @@ services:
             - USE_COLOR=True
             - SHOW_PROGRESS=False
         volumes:
-            - ./data:/data
+            - ../../docker-data/09-archivebox/data:/data
 
 
     # Optional Addons: tweak these examples as needed for your specific use case
