@@ -7,7 +7,7 @@
 # Documentation:
 #     https://github.com/pirate/ArchiveBox/wiki/Docker#docker-compose
 
-version: '3.7'
+version: '3'
 
 services:
     archivebox:
