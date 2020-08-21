@@ -18,7 +18,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-      - ../docker-data/00-zoneminder/mysqldata:/var/lib/mysql
+      - ../../docker-data/00-zoneminder/mysqldata:/var/lib/mysql
     environment:
       MYSQL_USER: zmuser
       MYSQL_PASSWORD: zmpass
