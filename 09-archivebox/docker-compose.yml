@@ -17,13 +17,13 @@ services:
         stdin_open: true
         tty: true
         ports:
-            - 8059:8000
+            - 8000:8000
         environment:
             - USE_COLOR=True
             - SHOW_PROGRESS=False
         volumes:
             - ./data:/data
-            - ./import:/import
+
 
     # Optional Addons: tweak these examples as needed for your specific use case
 
