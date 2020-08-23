@@ -8,7 +8,7 @@ services:
     volumes:
       - ../../docker-data/10-reminiscence/nginx:/usr/src/reminiscence
     ports:
-      - "5060:80"
+      - "8060:80"
     depends_on:
       - web
 
