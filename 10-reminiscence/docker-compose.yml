@@ -1,4 +1,4 @@
-version: '3'
+vrsion: '3'
 
 services:
   nginx:
@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     volumes:
-      - .:/usr/src/reminiscence
+      - ../../docker-data/10-reminiscence/nginx:/usr/src/reminiscence
     ports:
       - "5060:80"
     depends_on:
@@ -20,9 +20,9 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./static:/usr/src/reminiscence/static/
-      - ./archive:/usr/src/reminiscence/archive/
-      - ./logs:/usr/src/reminiscence/logs/
+      - ../../docker-data/10-reminiscence/static:/usr/src/reminiscence/static/
+      - ../../docker-data/10-reminiscence//archive:/usr/src/reminiscence/archive/
+      - ../../docker-data/10-reminiscence/logs:/usr/src/reminiscence/logs/
     depends_on:
       - db
 
@@ -36,4 +36,4 @@ services:
     #environment:
     #  - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - ./db:/var/lib/postgresql/data/
+      - ../../docker-data/10-reminiscence/db:/var/lib/postgresql/data/
