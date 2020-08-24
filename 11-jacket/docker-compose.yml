@@ -10,8 +10,8 @@ services:
       - AUTO_UPDATE=true #optional
       - RUN_OPTS=run options here #optional
     volumes:
-      - path to data:/config
-      - path to blackhole:/downloads
+      - ../../docker-data/11-jacket/config:/config
+      - ../../docker-data/11-jacket/dowloads:/downloads
     ports:
       - 8061:9117
     restart: unless-stopped
