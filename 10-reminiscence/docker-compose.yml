@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     volumes:
-      - ../../docker-data/10-reminiscence/nginx:/usr/src/reminiscence
+      - .:/usr/src/reminiscence
     ports:
-      - "8060:80"
+      - "80:80"
     depends_on:
       - web
 
@@ -17,14 +17,12 @@ services:
     command: bash -c "while ! nc -w 1 -z db 5432; do sleep 0.1; done; python manage.py migrate; python manage.py createdefaultsu; python manage.py collectstatic --no-input; if [ ! -d '/usr/src/reminiscence/static/nltk_data' ]; then echo 'wait..downloading..nltk_data'; python manage.py nltkdownload; fi; gunicorn --max-requests 1000 --worker-class gthread --workers 4 --thread 10 --timeout 300 --bind 0.0.0.0:8000 reminiscence.wsgi"
     env_file:
       - ./docker.env
-      - ../../docker-data/10-reminiscence/vidt.env
-      
     ports:
       - "8000:8000"
     volumes:
       - ./static:/usr/src/reminiscence/static/
-      - ../../docker-data/10-reminiscence//archive:/usr/src/reminiscence/archive/
-      - ../../docker-data/10-reminiscence/logs:/usr/src/reminiscence/logs/
+      - ./archive:/usr/src/reminiscence/archive/
+      - ./logs:/usr/src/reminiscence/logs/
     depends_on:
       - db
 
@@ -38,4 +36,4 @@ services:
     #environment:
     #  - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - ../../docker-data/10-reminiscence/db:/var/lib/postgresql/data/
+      - ./db:/var/lib/postgresql/data/
