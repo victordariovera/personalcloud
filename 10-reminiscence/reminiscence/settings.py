@@ -111,7 +111,7 @@ ROOT_URLCONF = 'reminiscence.urls'
 
 # Add root url location, keep it blank or add location ex: /bookmark
 
-ROOT_URL_LOCATION = ''
+ROOT_URL_LOCATION = '/secure/reminiscence'
 
 TEMPLATES = [
     {
