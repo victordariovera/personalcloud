@@ -1,0 +1,6 @@
+version: '3'
+services:
+  web:
+    image: nodered/node-red
+    ports:
+      - "8063:1880"
