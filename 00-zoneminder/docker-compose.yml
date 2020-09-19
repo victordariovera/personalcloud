@@ -12,7 +12,7 @@ services:
       - db
     volumes:
       - $PWD/storage:/storage
-    shm_size: 2048M
+    shm_size: 3072M
   db:
     image: mysql/mysql-server:5.7
     command: --default-authentication-plugin=mysql_native_password

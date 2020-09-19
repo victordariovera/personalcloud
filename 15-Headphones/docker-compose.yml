@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  headphones:
+    image: linuxserver/headphones
+    container_name: headphones
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ../../docker-data/15-Headphones/config:/config
+      - ../../docker-data/15-Headphones/Downloads:/downloads
+      - ../../docker-data/15-Headphones/Musica:/music
+      - ../../docker-data/15-Headphones/watch:/watch
+    ports:
+      - 8065:8181
+    restart: unless-stopped

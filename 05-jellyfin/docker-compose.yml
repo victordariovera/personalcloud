@@ -3,11 +3,10 @@ services:
     jellyfin:
       image: jellyfin/jellyfin:latest
       volumes:
-        - $PWD/config:/config
-        - $PWD/cache:/cache
-        - $PWD/media/video:/media/video
-        - $PWD/media/musica:/media/musica
-        - $PWD/media/iptv:/media/iptv
+        - ../../docker-data/05-jellyfin/config:/config
+        - ../../docker-data/05-jellyfin/cache:/cache
+        - ../../docker-data/05-jellyfin/Video:/media/video
+        - ../../docker-data/05-jellyfin/Musica:/media/musica
       restart: always
       ports:
       - 8055:8096

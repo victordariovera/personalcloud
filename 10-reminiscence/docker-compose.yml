@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     volumes:
-      - .:/usr/src/reminiscence
+      - ../../docker-data/10-reminiscence/:/usr/src/reminiscence
     ports:
       - "8060:80"
     depends_on:
